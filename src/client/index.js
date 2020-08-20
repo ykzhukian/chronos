@@ -8,7 +8,6 @@ log.dd(rooms)
 
 let roomsData = rooms
 
-console.log('windows.location???', this.location.search)
 const search = this.location.search
 const params = new URLSearchParams(search)
 const room = params.get('room')
