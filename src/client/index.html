@@ -44,17 +44,24 @@ article.room {
 	padding: 1em;
 }
 header {
-	padding: 0.5em 0;
-	border-bottom: medium ridge;
+	margin-bottom: 10px;
 }
-section > h1 {
+h1 {
 	margin: 0.5em 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+h1 small {
+	font-size: 1rem;
 }
 section p {
 	margin: 0.5em 0 ;
 }
 .current {
-	border-bottom: medium ridge;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba(106, 106, 106, 0.219);
 }
 .current input[type="button"] {
 	float: right;
@@ -69,7 +76,9 @@ main > footer {
 
 <template id="chronos-room">
 	<article class="room" :class="[room.status]">
-		<header>{{room.name}} <small>会议室 ({{room.location}})</small></header>
+		<header>
+			<h1>{{room.name}} <small>{{room.location}}</small></h1>
+		</header>
 		<section class="current" :class="[room.currentSession]">
 			<h1>Current</h1>
 			<p v-if="room.available">空闲</p>

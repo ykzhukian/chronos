@@ -31,5 +31,8 @@
     "systemjs-plugin-babel": "0.0.15",
     "vue": "^2.0.1"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0"
+  }
 }

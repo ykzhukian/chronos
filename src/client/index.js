@@ -6,6 +6,16 @@ log.level = 'dd'
 
 log.dd(rooms)
 
+let roomsData = rooms
+
+console.log('windows.location???', this.location.search)
+const search = this.location.search
+const params = new URLSearchParams(search)
+const room = params.get('room')
+if (room) {
+	roomsData = roomsData.filter(r => r.id === room)
+}
+
 Vue.component('chronos-room', {
 	template: '#chronos-room',
 	props: ['room'],
@@ -19,7 +29,7 @@ Vue.filter('timeHHMM', d => {
 const vm = new Vue({
 	el: 'main',
 	data: {
-		rooms,
+		rooms: roomsData,
 		now: new Date,
 	},
 	methods: {

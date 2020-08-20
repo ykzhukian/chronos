@@ -41,7 +41,7 @@ export default class Room {
 	}
 
 	get comingSessions() {
-		return this.schedule.filter(({status}) => status === 'coming')
+		return this.schedule.filter(({status}) => status === 'coming').sort((a, b) => a.startTime - b.startTime)
 	}
 
 	get status() {

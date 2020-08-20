@@ -24,9 +24,9 @@ export default class Session {
 		const now = Date.now()
 		if (now > this.endTime) return 'ended'
 		if (now > this.endTime - 5 * 60 * 1000) return 'ready-to-end'
-		if (now < this.startTime - 15 * 60 * 1000) return 'coming'
+		if (now < this.startTime) return 'coming'
 		if (this._started) return 'in-progress'
-		if (now < this.startTime + 10 * 60 * 1000) return 'ready-to-start'
+		// if (now < this.startTime + 10 * 60 * 1000) return 'ready-to-start'
 		return 'in-progress'
 		// return 'abandoned'
 	}
@@ -43,10 +43,10 @@ export default class Session {
 		return this.event.attendees
 	}
 	get startTime() {
-		return new Date(this.event.start.dateTime)
+		return new Date(this.event.start.dateTime + 'Z')
 	}
 	get endTime() {
-		return new Date(this.event.end.dateTime)
+		return new Date(this.event.end.dateTime + 'Z')
 	}
 	get duration() {
 		return (this.endTime - this.startTime) / 60000
